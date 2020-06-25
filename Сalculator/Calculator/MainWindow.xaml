@@ -1,0 +1,61 @@
+﻿<Window x:Name="MainWindow1" x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="Calculator" Icon="Resources\calculator.ico" Height="400" Width="350" KeyDown="Window_KeyDown">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="lightorange" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FFF0F0F0" Offset="0"/>
+            <GradientStop Color="#FFFFDB4D" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="lightlime" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="Lime" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="n0" Grid.Row="6" Grid.ColumnSpan="2" Content="0" Click="n0_Click"/>
+        <Button x:Name="Equal" Grid.Row="6" Grid.Column="2" Content="=" Background = "{StaticResource lightlime}" Click="Equal_Click"/>
+        <Button x:Name="n1" Grid.Row="5" Grid.Column="0" Content="1" Click="n1_Click"/>
+        <Button x:Name="n2" Grid.Row="5" Grid.Column="1" Content="2" Click="n2_Click"/>
+        <Button x:Name="n3" Grid.Row="5" Grid.Column="2" Content="3" Click="n3_Click"/>
+        <Button x:Name="n4" Grid.Row="4" Grid.Column="0" Content="4" Click="n4_Click"/>
+        <Button x:Name="n5" Grid.Row="4" Grid.Column="1" Content="5" Click="n5_Click"/>
+        <Button x:Name="n6" Grid.Row="4" Grid.Column="2" Content="6" Click="n6_Click"/>
+        <Button x:Name="n7" Grid.Row="3" Grid.Column="0" Content="7" Click="n7_Click"/>
+        <Button x:Name="n8" Grid.Row="3" Grid.Column="1" Content="8" Click="n8_Click"/>
+        <Button x:Name="n9" Grid.Row="3" Grid.Column="2" Content="9" Click="n9_Click"/>
+        <Button x:Name="Clean" Grid.Row="6" Grid.Column="3" Content="C" Background="{StaticResource lightorange}" Click="Clean_Click"/>
+        <Button x:Name="Com" Grid.Row="5" Grid.Column="3" Content="," Background="LightSteelBlue" Click="Com_Click"/>
+        <Button x:Name="Sign" Grid.Row="4" Grid.Column="3" Content="+/-" Background="LightSteelBlue" Click="Sign_Click"/>
+        <Button x:Name="Sub" Grid.Row="3" Grid.Column="3" Content="-" Background="LightSteelBlue" Click="Sub_Click"/>
+        <Button x:Name="Add" Grid.Row="2" Grid.Column="3" Content="+" Background="LightSteelBlue" Click="Add_Click"/>
+        <Button x:Name="Mul" Grid.Row="2" Grid.Column="2" Content="*" Background="LightSteelBlue" Click="Mul_Click"/>
+        <Button x:Name="Div" Grid.Row="2" Grid.Column="1" Content="/" Background="LightSteelBlue" Click="Div_Click"/>
+        <Button x:Name="Del" Grid.Row="2" Grid.Column="0" Content="←" Background="LightSteelBlue" Click="Del_Click"/>
+        <TextBox x:Name="TextBox" Grid.Row="1" Grid.ColumnSpan="4" Text="0" FontSize="22" TextAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" />
+        <TextBox x:Name="AdditionalTextBox" Grid.Row="0" Grid.ColumnSpan="4" FontSize="14" TextAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" />
+    </Grid>
+</Window>

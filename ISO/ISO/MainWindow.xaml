@@ -1,0 +1,96 @@
+﻿<Window x:Class="ISO.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ISO"
+        Title="Информационный справочник" Height="350" Width="600" Icon="Resources/ISO.ico">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="lightorange" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FFF0F0F0" Offset="0"/>
+            <GradientStop Color="#FFFFDB4D" Offset="1"/>
+        </LinearGradientBrush>
+        <Style x:Key="SeekButton">
+            <Setter Property="DockPanel.Dock" Value="Right"/>
+            <Setter Property="Control.Width" Value="60"/>
+            <Setter Property="Control.Background" Value="{StaticResource lightorange}"/>
+            <Setter Property="TextBlock.Margin" Value="3"/>
+            <Setter Property="TextBlock.Text" Value="Найти"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="Control.FontSize" Value="16"/>
+            <Setter Property="Control.Cursor" Value="Hand"/>
+            <EventSetter Event="Control.MouseLeftButtonDown" Handler="TextBlock_MouseLeftButtonDown"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="IsEditable" Value="True"/>
+            <Setter Property="IsTextSearchEnabled" Value="False"/>
+            <Setter Property="StaysOpenOnEdit" Value="True"/>
+            <Setter Property="IsTextSearchEnabled" Value="False"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Padding" Value="5"/>
+            <EventSetter Event="SizeChanged" Handler="ComboBox_SizeChanged"/>
+            <EventSetter Event="SelectionChanged" Handler="ComboBox_SelectionChanged"/>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/background.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabcontrol" Grid.Column="1" Grid.Row="0"  Background="{StaticResource lightorange}" Padding="3" Height="64" VerticalAlignment="Bottom" Margin="0,0,0,7" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Background="{StaticResource lightorange}">
+                <TabItem.Header>
+                    <TextBlock FontSize="14">Название</TextBlock>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource SeekButton}"/>
+                        <ComboBox x:Name="combo_name"/>
+                    </DockPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Background="{StaticResource lightorange}">
+                <TabItem.Header>
+                    <TextBlock FontSize="14">Код</TextBlock>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <DockPanel>
+                        <TextBlock />
+                        <TextBlock Style="{StaticResource SeekButton}"/>
+                        <ComboBox x:Name="combo_code"/>
+                    </DockPanel>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+        <Grid x:Name="Panelwithin" Grid.Column="1" Grid.Row="1" Visibility="Hidden" Margin="10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2.5*"/>
+            </Grid.RowDefinitions>
+            <Image  Margin="10" Source="/Resources/ISOicon.jpg"/>
+            <TextBlock FontSize="16" x:Name="CurrentCode" Grid.Column="1" FontWeight="Bold" TextWrapping="Wrap" Padding="10"/>
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <TextBlock x:Name="CurrentName" TextAlignment="Center" FontSize="14" TextWrapping="Wrap"/>
+                <TextBlock  FontSize="14" Foreground="Gray" FontWeight="Light" Padding="10">
+                <Run x:Name="StateRow"/>
+                <LineBreak/>
+                <Run x:Name="PagesRow"/>
+                </TextBlock>
+            </StackPanel>
+            <Image x:Name="StatePicture" Grid.Column="2" Margin="10"/>
+            <Image Grid.Column="2" Grid.Row="1" Source="/Resources/pdf.png" Margin="0 40 0 40" Cursor="Hand" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+        </Grid>
+    </Grid>
+</Window>
